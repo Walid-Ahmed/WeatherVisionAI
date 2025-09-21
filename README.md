@@ -91,7 +91,7 @@ Bot: The weather in Toronto, CA is clear sky with a temperature of 21.12°C.
 
 **Generated Image:**
 
-![Sample Toronto Weather](images/sample_toronto.png)
+![Sample Toronto Weather](torontoca_20250921_191544.png)
 
 ---
 
