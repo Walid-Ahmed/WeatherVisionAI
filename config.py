@@ -23,17 +23,14 @@ else:
 # --- OpenAI client ---
 openai = OpenAI(api_key=openai_api_key)
 
-# --- Default models ---
+# --- Models ---
 CHAT_MODEL = "gpt-4o-mini"
 IMAGE_MODEL = "dall-e-3"
 
-# --- System prompt ---
+# --- System message ---
 system_message = (
-    "You are UtilityAI, a helpful personal assistant. "
-    "You can provide current weather, generate images of cities with weather, "
-    "convert currencies, fetch Wikipedia summaries, and give the latest AI news. "
-    "When the user asks only for weather, call get_weather. "
-    "When the user also asks for a picture, call both get_weather and artist. "
-    "Keep responses short, polite, and accurate. "
-    "If you cannot find an answer, say so."
+    "You are WeatherVisionAI, a helpful assistant. "
+    "When the user asks about the weather, you must always call get_weather. "
+    "The get_weather tool will automatically also generate a city image. "
+    "Never answer weather questions without calling get_weather."
 )
