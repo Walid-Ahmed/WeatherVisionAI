@@ -19,6 +19,8 @@ response = openai.chat.completions.create(
     messages=messages,
     tools=tools,  # expose available tools to the model (framework-free tool calling)
 )
+```
+
 
 
 ## 🚀 Features
