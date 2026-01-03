@@ -8,10 +8,10 @@ It combines OpenWeatherMap (for live weather) with OpenAI’s image generation (
 👉 Repo: [https://github.com/Walid-Ahmed/WeatherVisionAI/](https://github.com/Walid-Ahmed/WeatherVisionAI/)
 
 
-Tool Calling (No Agent Framework)
+## Tool Calling (No Agent Framework)
 
 This project uses the OpenAI Python SDK directly for tool calling (function calling).  
-No agent framework is used (e.g., LangChain, CrewAI). Tools are provided to the model in the API request, and the model may choose to call them.
+No agent framework is used (e.g., LangChain, CrewAI). Tools are provided to the model in the API request, and the model can choose to call them (via `tool_calls`), which the application executes in Python.
 
 ```python
 response = openai.chat.completions.create(
@@ -20,7 +20,6 @@ response = openai.chat.completions.create(
     tools=tools,  # expose available tools to the model (framework-free tool calling)
 )
 
----
 
 ## 🚀 Features
 - Ask about weather in any city (with optional country code).
