@@ -70,6 +70,26 @@ OPENWEATHER_API_KEY=your_openweathermap_key_here
 
 ---
 
+## 🔧 Configuration
+
+All configuration lives in `config.py`. It loads API keys from a `.env` file and defines the models used throughout the app.
+
+| Setting | Value | Purpose |
+|---|---|---|
+| `CHAT_MODEL` | `gpt-4o-mini` | Handles conversation and tool-call decisions |
+| `IMAGE_MODEL` | `dall-e-3` | Generates the city weather image via `artist` |
+| `OPENAI_API_KEY` | from `.env` | Authenticates both chat and image API calls |
+| `OPENWEATHER_API_KEY` | from `.env` | Fetches live weather data |
+
+To swap models, edit the constants in `config.py`:
+
+```python
+CHAT_MODEL = "gpt-4o-mini"   # change to e.g. "gpt-4o" for a more capable chat model
+IMAGE_MODEL = "dall-e-3"     # only dall-e-3 and dall-e-2 are supported
+```
+
+---
+
 ## ▶️ Usage
 Run the assistant:
 
