@@ -106,18 +106,17 @@ Then type questions like:
 
 ## 🧠 Workflow
 
-WeatherVisionAI uses an **agentic flow**:
-1. User asks a weather-related question.  
-2. Assistant calls `get_weather` tool.  
-3. After weather is retrieved, `artist` runs automatically to generate a matching city image.  
-4. Response returned with text + saved image.  
+WeatherVisionAI uses an **agentic flow**. The model decides whether to call a tool based on the user's question:
 
 ```mermaid
 flowchart TD
-    User["User Question"] --> AIAssistant["AI Assistant"]
-    AIAssistant --> WeatherTool["🌤️ get_weather tool"]
-    WeatherTool --> Artist["🎨 artist (auto after weather)"]
-    Artist --> Response["Weather Report + Image"]
+    User["💬 User Question"] --> AI["🤖 AI Assistant\ngpt-4o-mini"]
+
+    AI -->|"finish_reason = tool_calls\ne.g. What's the weather in Paris?"| ToolCall["🌤️ get_weather\ntool called"]
+    AI -->|"finish_reason = stop\ne.g. What is your name?"| DirectReply["💬 Direct Reply\n(no tool needed)"]
+
+    ToolCall --> Artist["🎨 artist\n(called internally by get_weather)"]
+    Artist --> WeatherReply["🌦️ Weather Report + City Image"]
 ```
 
 ---
