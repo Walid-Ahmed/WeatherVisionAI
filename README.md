@@ -21,6 +21,16 @@ response = openai.chat.completions.create(
 )
 ```
 
+### Known Limitation: Only the first tool call is handled
+
+In `tools.py`, the tool handler reads only the first tool call from the response:
+
+```python
+tool_call = message.tool_calls[0]  # only handles the first tool call
+```
+
+If the model were to return multiple tool calls in a single response, the remaining ones would be silently ignored. **This is intentional** — the app exposes only one tool (`get_weather`), so the model will never return more than one tool call per turn. No fix is needed for the current design.
+
 
 
 ## 🚀 Features
