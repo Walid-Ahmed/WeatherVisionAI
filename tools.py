@@ -12,7 +12,7 @@ from io import BytesIO
 # Called by handle_tool_call when the model decides an image is needed.
 # The weather string (e.g. "Scattered clouds with 15.98°C") is injected into
 # the prompt so sky colour, lighting, and atmosphere match real conditions.
-def artist(city, weather):
+def artist(city, weather="clear sky"):
     print(f"🎨 artist called for {city} with weather: {weather}")
     try:
         image_response = openai.images.generate(
@@ -110,9 +110,9 @@ artist_function = {
         "type": "object",
         "properties": {
             "city":    {"type": "string", "description": "City name"},
-            "weather": {"type": "string", "description": "Weather description returned by get_weather"},
+            "weather": {"type": "string", "description": "Weather description returned by get_weather. Defaults to 'clear sky' if not available."},
         },
-        "required": ["city", "weather"],
+        "required": ["city"],
     },
 }
 
@@ -145,7 +145,7 @@ def handle_tool_call(message):
 
     elif tool_call.function.name == "artist":
         city    = arguments.get("city")
-        weather = arguments.get("weather")  # value comes from the prior get_weather result
+        weather = arguments.get("weather", "clear sky")  # default if model skips get_weather
         filepath = artist(city, weather)
         response = {
             "role": "tool",

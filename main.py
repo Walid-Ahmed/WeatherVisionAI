@@ -49,7 +49,8 @@ if __name__ == "__main__":
     print("\nGeneral questions (no tools called):")
     print("   - What is your name?")
     print("   - What can you help me with?\n")
-    print("Type 'quit' to exit.\n")
+    print("Type 'quit' to exit.")
+    print("💾 Your conversation will be saved to chat_history.json on exit.\n")
 
     while True:
         user_input = input("You: ")
