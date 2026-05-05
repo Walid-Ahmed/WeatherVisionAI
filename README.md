@@ -9,6 +9,18 @@ It combines OpenWeatherMap (live weather) with DALL-E 3 (image generation) and G
 
 ---
 
+## 🤖 Single Agent Design
+
+This is a **single-agent** system — one `gpt-4o-mini` model instance handles the entire conversation: deciding what to do, calling tools, reading results, and producing the final reply. There is no planner model, no sub-agents, and no parallel model instances.
+
+```
+One model  →  decides which tools to call  →  executes them sequentially  →  replies
+```
+
+A multi-agent design would involve multiple model instances coordinating with each other (e.g. a planner + specialist agents). That complexity is not needed here.
+
+---
+
 ## 🧠 How It Works — Agentic Tool Calling
 
 This project uses the **OpenAI Python SDK directly** — no LangChain, no CrewAI, no agent framework.
