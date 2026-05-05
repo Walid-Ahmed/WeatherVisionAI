@@ -1,0 +1,13 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Local artifacts — generated images are ignored except the README example
+images/*
+!images/alexandria_20260504_205548.png
+chat_history.json
